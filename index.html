@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>筆算電卓</title>
+    
+    <!-- PWA / Mobile Web App Settings -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="筆算電卓">
+    <meta name="theme-color" content="#1e293b">
+
+    <!-- iOS Icon (Base64 Placeholder) -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzNCOTE1NEREMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzNCOTE1NEVEMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDM0I5MTU0QkQzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDM0I5MTU0Q0QzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu0Q318AAAXESURBVHja7N1/iFV1HMDx573X3d11d13d1dXV1dXV1dXV1dXV1dVVV1111VXX6qo/9kfd1b/8kYKgP1SCKAgioqA/IiKioD8iIiIigv6I6I+I6I+I6I+Ivsdz4fO593x/z7n3d873d+85HxjM3e/v3O+ce7/nfM/v+/2+bwQAAAAAAACgX0X5H583b97q4cOHFw0fPrz0uHHjSk1NTaW949ixY6UdP3689Pjx46U9v1+2bNnF+f2G7u7uS/b391/a29t7+bFjx644ceLElae7ubm5dNeuXaV3795devv27aX9+eX5/T3Tpk27oqur64rhw4dfaVv1qN26dev206dPX7d3797rT5w4cT0fAgC04oK0R7t27dr9vXv33nDq1Kkb84P36iuvvPKqixcvvrqtra304MGDpX19faVnz54tnTt37t8t/3+t/P/f+7N+/frSTZs2lV65cmXpkSNHlu7atap0165dpWfOnCkdPnx4aX9O5+f78/v2/Px7a2tr6bJly/74TOrs7Cy9dOnS0vPnz5f2fH7F8OHDS5cuXVpas2ZN6ZEjR0p7vj9//nzpiBEjSltaWkoXLlxYOnHixNLm5ubS3t7e0mPHjpXevHlz6dq1a0v7c7+U39/d3X3dvn37bsyv35bft/GhAUCj5822trbL165de/uxY8duPnXq1M09PT23Xrhw4dYJEya05Qfv9REjRlzf2dl5w8mTJ2/u6+u77cyZM7f3529ra7uhvb39ho6Ojhu6u7tvOH369K3589vOnDlza9u689v68u39+fntp0+fvvXkyZO35c9vy5/f1tfXd1t/f//tJ06cuP3o0aO3Hzly5PbDhw/fvn///tu3bdt2++bNm2/Pz9+eP39bft62/Lxtfn7b2rVrbyvP37ZixYrbVq5ceduSJUv+eC1dunTpba2trbdNnjz5tqampttmzpx524wZM/54TZ8+/bbp06ff1tXVdVtHR8dtw4cPf+E1bNiw29ra2m7r6em5vbe39/aenh7+bABAM/bS79i5c+f9Bw4ceHDPnj0P5gfvzQ8ePHj/oUOHHuzp6XkwP/DB/OAHDx8+/ODOHTse3Llz54Nr1659sGLFigcLFy58MH/+/Afz589/sGTJkgdLly59sHz58gfLli17sHLlygcrV658sGrVqgerV69+sGbNmgdr1qx5sH79+x8+cODAw4cOHXr48OHDDx85cuThI0eOPHzkyJGHjx49+vDJkycfPnPmzMNnzpx5+OzZsw+fP3/+4YsXLz586dKlh8+fP//w+fPnH75w4cLDHR0dD3d2dj7c1dX1cE9Pz8M9PT0P9/b2PtyXbx8+fPjwoUOHHj548ODDBw4cePjAgQMP+/kE0Ey99FWrVj3av3//o4cOHXq0p6fn0Z6enkePHz/+aF9f36MnTpx49OTJk4+eOnXq0bNnz/7bcvLkyUePHz/+6IkTJ/7t+ePHjz96/PjxR0+cOJHv//31X59L+f7Ro0cfPXr06KNHjhx5tC/fPnrkyJFH+/v7Hz106NCjBw8efLTh80cPHTr06KFDhx49ePDgo4cOHXq0L98+euTIkUf7+/sfPXr06KMnTpx49OTJk4/m1x89derUo2fPnn303LlzehkAmi8P/ebNm/0AAvAP+u0dO3b4EQTgn/Pb69ev90MIwD/nt1etWuWHEIB/zm8vX77cDyEA/5zfLlu2zA8hAP+c3y5ZssQPIQD/nN/Onz/fDyEA/5zfTp8+3Q8hAP+c386dO9cPIQD/nN/OmjXLDyEA/5zfTp8+3Q8hAP+c306dOtUPIQD/nN9OnjzZDyEA/6zfHjNmjJ9CAP5pvz1y5Eg/hgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJ/4S4ABAIV8H1x7y+aVAAAAAElFTkSuQmCC">
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzNCOTE1NEREMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzNCOTE1NEVEMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDM0I5MTU0QkQzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDM0I5MTU0Q0QzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu0Q318AAAXESURBVHja7N1/iFV1HMDx573X3d11d13d1dXV1dXV1dXV1dXV1dVVV1111VXX6qo/9kfd1b/8kYKgP1SCKAgioqA/IiKioD8iIiIigv6I6I+I6I+I6I+Ivsdz4fO593x/z7n3d873d+85HxjM3e/v3O+ce7/nfM/v+/2+bwQAAAAAAACgX0X5H583b97q4cOHFw0fPrz0uHHjSk1NTaW949ixY6UdP3689Pjx46U9v1+2bNnF+f2G7u7uS/b391/a29t7+bFjx644ceLElae7ubm5dNeuXaV3795devv27aX9+eX5/T3Tpk27oqur64rhw4dfaVv1qN26dev206dPX7d3797rT5w4cT0fAgC04oK0R7t27dr9vXv33nDq1Kkb84P36iuvvPKqixcvvrqtra304MGDpX19faVnz54tnTt37t8t/3+t/P/f+7N+/frSTZs2lV65cmXpkSNHlu7atap0165dpWfOnCkdPnx4aX9O5+f78/v2/Px7a2tr6bJly/74TOrs7Cy9dOnS0vPnz5f2fH7F8OHDS5cuXVpas2ZN6ZEjR0p7vj9//nzpiBEjSltaWkoXLlxYOnHixNLm5ubS3t7e0mPHjpXevHlz6dq1a0v7c7+U39/d3X3dvn37bsyv35bft/GhAUCj5822trbL165de/uxY8duPnXq1M09PT23Xrhw4dYJEya05Qfv9REjRlzf2dl5w8mTJ2/u6+u77cyZM7f3529ra7uhvb39ho6Ojhu6u7tvOH369K3589vOnDlza9u689v68u39+fntp0+fvvXkyZO35c9vy5/f1tfXd1t/f//tJ06cuP3o0aO3Hzly5PbDhw/fvn///tu3bdt2++bNm2/Pz9+eP39bft62/Lxtfn7b2rVrbyvP37ZixYrbVq5ceduSJUv+eC1dunTpba2trbdNnjz5tqampttmzpx524wZM/54TZ8+/bbp06ff1tXVdVtHR8dtw4cPf+E1bNiw29ra2m7r6em5vbe39/aenh7+bABAM/bS79i5c+f9Bw4ceHDPnj0P5gfvzQ8ePHj/oUOHHuzp6XkwP/DB/OAHDx8+/ODOHTse3Llz54Nr1659sGLFigcLFy58MH/+/Afz589/sGTJkgdLly59sHz58gfLli17sHLlygcrV658sGrVqgerV69+sGbNmgdr1qx5sH79+x8+cODAw4cOHXr48OHDDx85cuThI0eOPHzkyJGHjx49+vDJkycfPnPmzMNnzpx5+OzZsw+fP3/+4YsXLz586dKlh8+fP//w+fPnH75w4cLDHR0dD3d2dj7c1dX1cE9Pz8M9PT0P9/b2PtyXbx8+fPjwoUOHHj548ODDBw4cePjAgQMP+/kE0Ey99FWrVj3av3//o4cOHXq0p6fn0Z6enkePHz/+aF9f36MnTpx49OTJk4+eOnXq0bNnz/7bcvLkyUePHz/+6IkTJ/7t+ePHjz96/PjxR0+cOJHv//31X59L+f7Ro0cfPXr06KNHjhx5tC/fPnrkyJFH+/v7Hz106NCjBw8efLTh80cPHTr06KFDhx49ePDgo4cOHXq0L98+euTIkUf7+/sfPXr06KMnTpx49OTJk4/m1x89derUo2fPnn303LlzehkAmi8P/ebNm/0AAvAP+u0dO3b4EQTgn/Pb69ev90MIwD/nt1etWuWHEIB/zm8vX77cDyEA/5zfLlu2zA8hAP+c3y5ZssQPIQD/nN/Onz/fDyEA/5zfTp8+3Q8hAP+c386dO9cPIQD/nN/OmjXLDyEA/5zfTp8+3Q8hAP+c306dOtUPIQD/nN9OnjzZDyEA/6zfHjNmjJ9CAP5pvz1y5Eg/hgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJ/4S4ABAIV8H1x7y+aVAAAAAElFTkSuQmCC">
+
+    <!-- CSS Frameworks & Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
+      
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #1e293b; /* slate-800 matches app bg */
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .font-mono {
+        font-family: 'JetBrains Mono', monospace;
+      }
+      /* Prevent elastic scrolling on iOS */
+      html, body {
+        overscroll-behavior: none;
+        height: 100%;
+        width: 100%;
+      }
+    </style>
+
+    <!-- React Dependencies -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // --- TYPES & CONSTANTS ---
+        const CalculatorAction = {
+            ADD: '+',
+            SUBTRACT: '-',
+            MULTIPLY: '*',
+            DIVIDE: '/',
+            EQUALS: '=',
+            CLEAR: 'C',
+            ALL_CLEAR: 'AC',
+            GT: 'GT',
+            DECIMAL: '.',
+            BACKSPACE: '⌫'
+        };
+
+        // --- COMPONENTS ---
+
+        // Button Component
+        const Button = ({ label, onClick, className = '', variant = 'default' }) => {
+            const baseStyles = "active:scale-95 transition-transform duration-75 select-none text-xl font-medium rounded-lg shadow-sm flex items-center justify-center h-14 md:h-16";
+            
+            const variants = {
+                default: "bg-white text-slate-700 hover:bg-slate-50 border border-slate-200", 
+                operator: "bg-blue-100 text-blue-700 hover:bg-blue-200 border border-blue-200", 
+                action: "bg-slate-200 text-slate-800 hover:bg-slate-300 border border-slate-300", 
+                accent: "bg-blue-600 text-white hover:bg-blue-700 border border-blue-700 shadow-md", 
+            };
+
+            return (
+                <button
+                    onClick={onClick}
+                    className={`${baseStyles} ${variants[variant]} ${className}`}
+                    type="button"
+                >
+                    {label}
+                </button>
+            );
+        };
+
+        // Tape Component
+        const Tape = ({ entries, onToggleEntry }) => {
+            const bottomRef = React.useRef(null);
+
+            React.useEffect(() => {
+                // Auto-scroll to nearest (bottom) element when entries change
+                if (entries.length > 0) {
+                    bottomRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
+            }, [entries]);
+
+            const formatNumber = (num) => {
+                return new Intl.NumberFormat('ja-JP', { maximumFractionDigits: 10 }).format(num);
+            };
+
+            const getDisplayOperator = (op) => {
+                switch(op) {
+                    case '*': return '×';
+                    case '/': return '÷';
+                    case '+': return '+';
+                    case '-': return '-';
+                    case '=': return '=';
+                    default: return '';
+                }
+            };
+
+            return (
+                <div className="flex flex-col min-h-full font-mono text-slate-800 p-1 pb-4">
+                    {entries.length === 0 && (
+                        <div className="flex-1 flex flex-col items-center justify-center text-slate-300 space-y-2 select-none h-40">
+                             <div className="w-8 h-1 bg-slate-200 rounded-full mb-1"></div>
+                             <p className="text-[10px]">No entries</p>
+                        </div>
+                    )}
+
+                    <div className="flex flex-col gap-0.5">
+                        {entries.map((entry) => {
+                            if (entry.isTotal) {
+                               return (
+                                  <div key={entry.id} className="flex flex-col pt-1 pb-2 mb-1">
+                                      <div className="border-t-2 border-slate-400 mb-0.5 mx-1"></div>
+                                      <div className="flex justify-end items-center px-1 font-bold text-slate-900">
+                                          <span className="text-base tracking-tight">{formatNumber(entry.value)}</span>
+                                      </div>
+                                      <div className="border-b border-dashed border-slate-300 mt-1 mx-2"></div>
+                                  </div>
+                               );
+                            }
+
+                            return (
+                              <div
+                                key={entry.id}
+                                onClick={() => onToggleEntry(entry.id)}
+                                className={`
+                                  relative flex items-center justify-between px-1 py-0.5 cursor-pointer select-none rounded hover:bg-slate-100 transition-colors
+                                  ${entry.isExcluded ? 'opacity-50 line-through decoration-red-500/50 decoration-2 bg-red-50' : ''}
+                                `}
+                              >
+                                 <div className="text-slate-500 font-bold text-xs w-4 text-center shrink-0 mt-0.5">
+                                    {getDisplayOperator(entry.operator)}
+                                 </div>
+                                 <div className="text-sm font-medium text-slate-700 text-right flex-1 leading-tight tracking-tight whitespace-nowrap overflow-hidden text-ellipsis">
+                                    {formatNumber(entry.value)}
+                                 </div>
+                              </div>
+                            );
+                        })}
+                        <div ref={bottomRef} />
+                    </div>
+                </div>
+            );
+        };
+
+        // Main App Component
+        const App = () => {
+            const [currentInput, setCurrentInput] = React.useState('0');
+            
+            // Load from Local Storage
+            const [tape, setTape] = React.useState(() => {
+                if (typeof window !== 'undefined') {
+                    try {
+                        const saved = window.localStorage.getItem('calculator_tape');
+                        return saved ? JSON.parse(saved) : [];
+                    } catch (e) {
+                        return [];
+                    }
+                }
+                return [];
+            });
+
+            const [pendingOperator, setPendingOperator] = React.useState(null);
+            
+            const [grandTotal, setGrandTotal] = React.useState(() => {
+                if (typeof window !== 'undefined') {
+                    try {
+                        const saved = window.localStorage.getItem('calculator_grand_total');
+                        return saved ? parseFloat(saved) : 0;
+                    } catch (e) {
+                        return 0;
+                    }
+                }
+                return 0;
+            });
+
+            const [isNewNumber, setIsNewNumber] = React.useState(true);
+
+            // Save to Local Storage
+            React.useEffect(() => {
+                window.localStorage.setItem('calculator_tape', JSON.stringify(tape));
+            }, [tape]);
+
+            React.useEffect(() => {
+                window.localStorage.setItem('calculator_grand_total', grandTotal.toString());
+            }, [grandTotal]);
+
+            // Calculation Logic
+            const calculateTapeTotal = React.useCallback((entries) => {
+                if (entries.length === 0) return 0;
+                
+                let startIndex = 0;
+                for (let i = entries.length - 1; i >= 0; i--) {
+                    if (entries[i].isTotal) {
+                        startIndex = i + 1;
+                        break;
+                    }
+                }
+
+                let total = 0;
+                let hasStarted = false;
+
+                for (let i = startIndex; i < entries.length; i++) {
+                    const entry = entries[i];
+                    if (entry.isExcluded || entry.isTotal) continue;
+                    
+                    const val = entry.value;
+                    const op = entry.operator;
+
+                    if (!hasStarted || op === undefined) {
+                        total = val;
+                        hasStarted = true;
+                    } else {
+                         switch (op) {
+                            case '+': total += val; break;
+                            case '-': total -= val; break;
+                            case '*': total *= val; break;
+                            case '/': if (val !== 0) total /= val; break;
+                         }
+                    }
+                }
+
+                return total;
+            }, []);
+
+            const currentSolution = React.useMemo(() => {
+                if (tape.length === 0) return 0;
+                const lastEntry = tape[tape.length - 1];
+                if (lastEntry.isTotal) {
+                    return lastEntry.value;
+                }
+                return calculateTapeTotal(tape);
+            }, [tape, calculateTapeTotal]);
+
+            const handleNumber = (num) => {
+                if (isNewNumber) {
+                    setCurrentInput(num);
+                    setIsNewNumber(false);
+                } else {
+                    if (num === '.' && currentInput.includes('.')) return;
+                    if (num === '0' && currentInput === '0') return;
+                    if (num === '00' && currentInput === '0') return;
+                    
+                    setCurrentInput(prev => (prev === '0' && num !== '.') ? num : prev + num);
+                }
+            };
+
+            const handleOperator = (op) => {
+                const val = parseFloat(currentInput);
+                const lastEntryIsTotal = tape.length > 0 && tape[tape.length - 1].isTotal;
+
+                if (op === '=') {
+                    if (tape.length === 0 && !pendingOperator) return;
+
+                    let entryOp = pendingOperator || '+';
+                    
+                    if (!pendingOperator && (tape.length === 0 || lastEntryIsTotal)) {
+                        entryOp = undefined;
+                    }
+
+                    const newEntry = {
+                        id: Date.now().toString(),
+                        value: val,
+                        operator: entryOp,
+                        isExcluded: false,
+                    };
+                    
+                    const tempTape = [...tape, newEntry];
+                    const result = calculateTapeTotal(tempTape);
+                    
+                    setGrandTotal(prev => prev + result);
+                    
+                    const totalEntry = {
+                        id: (Date.now() + 1).toString(),
+                        value: result,
+                        operator: '=',
+                        isExcluded: false,
+                        isTotal: true
+                    };
+
+                    setTape([...tempTape, totalEntry]);
+                    setCurrentInput(result.toString());
+                    setPendingOperator(null);
+                    setIsNewNumber(true);
+                    
+                } else {
+                    if (pendingOperator && isNewNumber && !lastEntryIsTotal && tape.length > 0) {
+                         setPendingOperator(op);
+                         return;
+                    }
+
+                    let newTape = [...tape];
+
+                    if (tape.length === 0 || lastEntryIsTotal) {
+                        newTape.push({
+                            id: Date.now().toString(),
+                            value: val,
+                            operator: undefined, 
+                            isExcluded: false,
+                        });
+                    } else {
+                        newTape.push({
+                            id: Date.now().toString(),
+                            value: val,
+                            operator: pendingOperator || '+',
+                            isExcluded: false,
+                        });
+                    }
+
+                    setTape(newTape);
+                    setPendingOperator(op);
+                    
+                    const intermediateResult = calculateTapeTotal(newTape);
+                    setCurrentInput(intermediateResult.toString());
+                    setIsNewNumber(true);
+                }
+            };
+
+            const handleAction = (action) => {
+                switch (action) {
+                    case CalculatorAction.ALL_CLEAR:
+                        setTape([]);
+                        setCurrentInput('0');
+                        setPendingOperator(null);
+                        setGrandTotal(0);
+                        setIsNewNumber(true);
+                        window.localStorage.removeItem('calculator_tape');
+                        window.localStorage.removeItem('calculator_grand_total');
+                        break;
+                    case CalculatorAction.CLEAR:
+                        setCurrentInput('0');
+                        setIsNewNumber(true);
+                        break;
+                    case CalculatorAction.BACKSPACE:
+                        if (isNewNumber) return;
+                        setCurrentInput(prev => prev.length > 1 ? prev.slice(0, -1) : '0');
+                        break;
+                    case CalculatorAction.GT:
+                         setCurrentInput(grandTotal.toString());
+                         setIsNewNumber(true);
+                         break;
+                }
+            };
+
+            const handleToggleEntry = (id) => {
+                setTape(prev => prev.map(entry => 
+                    entry.id === id && !entry.isTotal ? { ...entry, isExcluded: !entry.isExcluded } : entry
+                ));
+            };
+
+            const formatDisplay = (numStr) => {
+                if (numStr.endsWith('.')) {
+                    return parseInt(numStr.slice(0, -1)).toLocaleString('ja-JP') + '.';
+                }
+                const num = parseFloat(numStr);
+                return isNaN(num) ? '0' : num.toLocaleString('ja-JP', { maximumFractionDigits: 10 });
+            };
+
+            const formatCurrency = (num) => {
+                return num.toLocaleString('ja-JP', { maximumFractionDigits: 10 });
+            }
+
+            return (
+                <div className="h-screen w-screen flex bg-slate-800 overflow-hidden font-sans">
+                  
+                  {/* LEFT: Calculator Interface (75% Width) */}
+                  <div className="w-[75%] flex flex-col items-center justify-center p-6 md:p-10 relative border-r border-slate-900">
+                    <div className="w-full max-w-2xl bg-slate-900 rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col gap-6 h-full max-h-[90vh]">
+                        
+                        {/* Display */}
+                        <div className="bg-[#c4cfbe] rounded-lg p-4 md:p-6 shadow-inner border-4 border-slate-700/50 flex flex-col justify-between h-32 md:h-40 shrink-0 relative">
+                            <div className="flex justify-between items-start">
+                                <div className="text-slate-600 text-xs font-bold tracking-wider">
+                                   {tape.length > 0 && tape[tape.length-1].isTotal ? 'GT' : pendingOperator ? `OP: ${pendingOperator}` : 'READY'}
+                                </div>
+                                {grandTotal !== 0 && (
+                                    <div className="text-slate-800 font-bold text-xs bg-slate-600/10 px-1 rounded">GT</div>
+                                )}
+                            </div>
+                            <div className="text-right text-4xl md:text-6xl font-mono font-bold text-slate-800 tracking-tight overflow-hidden text-ellipsis">
+                                {formatDisplay(currentInput)}
+                            </div>
+                        </div>
+
+                        {/* Keypad */}
+                        <div className="grid grid-cols-4 gap-3 md:gap-4 flex-1">
+                            <Button label="AC" onClick={() => handleAction(CalculatorAction.ALL_CLEAR)} variant="accent" className="bg-red-500 hover:bg-red-600 border-red-600 text-white" />
+                            <Button label="GT" onClick={() => handleAction(CalculatorAction.GT)} variant="action" />
+                            <Button label="→" onClick={() => handleAction(CalculatorAction.BACKSPACE)} variant="action" />
+                            <Button label="÷" onClick={() => handleOperator('/')} variant="operator" />
+
+                            <Button label="7" onClick={() => handleNumber('7')} />
+                            <Button label="8" onClick={() => handleNumber('8')} />
+                            <Button label="9" onClick={() => handleNumber('9')} />
+                            <Button label="×" onClick={() => handleOperator('*')} variant="operator" />
+
+                            <Button label="4" onClick={() => handleNumber('4')} />
+                            <Button label="5" onClick={() => handleNumber('5')} />
+                            <Button label="6" onClick={() => handleNumber('6')} />
+                            <Button label="-" onClick={() => handleOperator('-')} variant="operator" />
+
+                            <Button label="1" onClick={() => handleNumber('1')} />
+                            <Button label="2" onClick={() => handleNumber('2')} />
+                            <Button label="3" onClick={() => handleNumber('3')} />
+                            <Button label="+" onClick={() => handleOperator('+')} variant="operator" />
+
+                            <Button label="0" onClick={() => handleNumber('0')} />
+                            <Button label="00" onClick={() => handleNumber('00')} />
+                            <Button label="." onClick={() => handleNumber('.')} />
+                            <Button label="=" onClick={() => handleOperator('=')} variant="accent" className="bg-blue-600 border-blue-700 text-white"/>
+                        </div>
+                    </div>
+                  </div>
+
+                  {/* RIGHT: Split Column (25% Width) */}
+                  <div className="w-[25%] h-full flex flex-col bg-[#fffdf5] shadow-2xl relative z-10">
+                      
+                      {/* History Tape */}
+                      <div className="flex-1 overflow-y-auto scroll-smooth border-b-2 border-slate-300">
+                        <div className="p-2 bg-slate-200 border-b border-slate-300 text-center text-[10px] font-bold text-slate-500 uppercase tracking-widest shadow-sm sticky top-0 z-10">
+                            History
+                        </div>
+                        <Tape entries={tape} onToggleEntry={handleToggleEntry} />
+                      </div>
+
+                      {/* Solution Window */}
+                      <div className="h-[20%] bg-slate-50 p-2 flex flex-col justify-center items-end border-t border-slate-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]">
+                         <div className="text-slate-400 text-[10px] font-bold uppercase tracking-wider mb-1">
+                             Total
+                         </div>
+                         <div className="text-xl md:text-2xl font-mono font-bold text-slate-800 break-all leading-none tracking-tight">
+                             {formatCurrency(currentSolution)}
+                         </div>
+                      </div>
+                  </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
