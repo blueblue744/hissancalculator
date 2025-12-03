@@ -28,7 +28,7 @@
       .font-mono { font-family: 'JetBrains Mono', monospace; }
     </style>
 
-    <!-- React & Babel (iPhone対応版) -->
+    <!-- React & Babel -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -40,7 +40,7 @@
         // --- COMPONENTS ---
 
         const Button = ({ label, onClick, className = '', variant = 'default' }) => {
-            // 【修正】高さを h-full からオリジナルの h-14/h-16 に戻しました
+            // 【修正】高さを固定(h-14 / md:h-16)にし、勝手に伸びないようにしました
             const baseStyles = "active:scale-95 transition-transform duration-75 select-none text-xl font-medium rounded-lg shadow-sm flex items-center justify-center h-14 md:h-16";
             
             const variants = {
@@ -330,7 +330,13 @@
                   
                   {/* LEFT: Calculator Interface (75% Width) */}
                   <div className="w-[75%] flex flex-col items-center justify-center p-6 md:p-10 relative border-r border-slate-900">
-                    <div className="w-full max-w-2xl bg-slate-900 rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col gap-6 h-full max-h-[90vh]">
+                    {/* 
+                       【修正点】
+                       h-full を削除し、h-auto に変更しました。
+                       これで「画面いっぱいに無理やり引き伸ばされる」ことがなくなります。
+                       中身（ボタン）のサイズに合わせてキュッとまとまります。
+                    */}
+                    <div className="w-full max-w-2xl bg-slate-900 rounded-3xl shadow-2xl p-6 md:p-8 flex flex-col gap-6 h-auto">
                         
                         {/* Display */}
                         <div className="bg-[#c4cfbe] rounded-lg p-4 md:p-6 shadow-inner border-4 border-slate-700/50 flex flex-col justify-between h-32 md:h-40 shrink-0 relative">
@@ -348,7 +354,8 @@
                         </div>
 
                         {/* Keypad */}
-                        <div className="grid grid-cols-4 gap-3 md:gap-4 flex-1">
+                        {/* flex-1 を削除し、ボタンの高さなりに表示させます */}
+                        <div className="grid grid-cols-4 gap-3 md:gap-4">
                             <Button label="AC" onClick={() => handleAction('AC')} variant="accent" className="bg-red-500 hover:bg-red-600 border-red-600 text-white" />
                             <Button label="GT" onClick={() => handleAction('GT')} variant="action" />
                             <Button label="→" onClick={() => handleAction('⌫')} variant="action" />
