@@ -2,70 +2,45 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>筆算電卓</title>
     
-    <!-- PWA / Mobile Web App Settings -->
+    <!-- PWA Settings -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="筆算電卓">
     <meta name="theme-color" content="#1e293b">
 
-    <!-- iOS Icon (Base64 Placeholder) -->
-    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzNCOTE1NEREMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzNCOTE1NEVEMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDM0I5MTU0QkQzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDM0I5MTU0Q0QzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu0Q318AAAXESURBVHja7N1/iFV1HMDx573X3d11d13d1dXV1dXV1dXV1dXV1dVVV1111VXX6qo/9kfd1b/8kYKgP1SCKAgioqA/IiKioD8iIiIigv6I6I+I6I+I6I+Ivsdz4fO593x/z7n3d873d+85HxjM3e/v3O+ce7/nfM/v+/2+bwQAAAAAAACgX0X5H583b97q4cOHFw0fPrz0uHHjSk1NTaW949ixY6UdP3689Pjx46U9v1+2bNnF+f2G7u7uS/b391/a29t7+bFjx644ceLElae7ubm5dNeuXaV3795devv27aX9+eX5/T3Tpk27oqur64rhw4dfaVv1qN26dev206dPX7d3797rT5w4cT0fAgC04oK0R7t27dr9vXv33nDq1Kkb84P36iuvvPKqixcvvrqtra304MGDpX19faVnz54tnTt37t8t/3+t/P/f+7N+/frSTZs2lV65cmXpkSNHlu7atap0165dpWfOnCkdPnx4aX9O5+f78/v2/Px7a2tr6bJly/74TOrs7Cy9dOnS0vPnz5f2fH7F8OHDS5cuXVpas2ZN6ZEjR0p7vj9//nzpiBEjSltaWkoXLlxYOnHixNLm5ubS3t7e0mPHjpXevHlz6dq1a0v7c7+U39/d3X3dvn37bsyv35bft/GhAUCj5822trbL165de/uxY8duPnXq1M09PT23Xrhw4dYJEya05Qfv9REjRlzf2dl5w8mTJ2/u6+u77cyZM7f3529ra7uhvb39ho6Ojhu6u7tvOH369K3589vOnDlza9u689v68u39+fntp0+fvvXkyZO35c9vy5/f1tfXd1t/f//tJ06cuP3o0aO3Hzly5PbDhw/fvn///tu3bdt2++bNm2/Pz9+eP39bft62/Lxtfn7b2rVrbyvP37ZixYrbVq5ceduSJUv+eC1dunTpba2trbdNnjz5tqampttmzpx524wZM/54TZ8+/bbp06ff1tXVdVtHR8dtw4cPf+E1bNiw29ra2m7r6em5vbe39/aenh7+bABAM/bS79i5c+f9Bw4ceHDPnj0P5gfvzQ8ePHj/oUOHHuzp6XkwP/DB/OAHDx8+/ODOHTse3Llz54Nr1659sGLFigcLFy58MH/+/Afz589/sGTJkgdLly59sHz58gfLli17sHLlygcrV658sGrVqgerV69+sGbNmgdr1qx5sH79+x8+cODAw4cOHXr48OHDDx85cuThI0eOPHzkyJGHjx49+vDJkycfPnPmzMNnzpx5+OzZsw+fP3/+4YsXLz586dKlh8+fP//w+fPnH75w4cLDHR0dD3d2dj7c1dX1cE9Pz8M9PT0P9/b2PtyXbx8+fPjwoUOHHj548ODDBw4cePjAgQMP+/kE0Ey99FWrVj3av3//o4cOHXq0p6fn0Z6enkePHz/+aF9f36MnTpx49OTJk4+eOnXq0bNnz/7bcvLkyUePHz/+6IkTJ/7t+ePHjz96/PjxR0+cOJHv//31X59L+f7Ro0cfPXr06KNHjhx5tC/fPnrkyJFH+/v7Hz106NCjBw8efLTh80cPHTr06KFDhx49ePDgo4cOHXq0L98+euTIkUf7+/sfPXr06KMnTpx49OTJk4/m1x89derUo2fPnn303LlzehkAmi8P/ebNm/0AAvAP+u0dO3b4EQTgn/Pb69ev90MIwD/nt1etWuWHEIB/zm8vX77cDyEA/5zfLlu2zA8hAP+c3y5ZssQPIQD/nN/Onz/fDyEA/5zfTp8+3Q8hAP+c386dO9cPIQD/nN/OmjXLDyEA/5zfTp8+3Q8hAP+c306dOtUPIQD/nN/OnjzZDyEA/6zfHjNmjJ9CAP5pvz1y5Eg/hgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJ/4S4ABAIV8H1x7y+aVAAAAAElFTkSuQmCC">
-    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAYAAAA9zQYyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QzNCOTE1NEREMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QzNCOTE1NEVEMzExMTFFNTlCNjZDNjQ3NTIwQjM3M0YiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpDM0I5MTU0QkQzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpDM0I5MTU0Q0QzMTExMUU1OUI2NkM2NDc1MjBCMzczRiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/Pu0Q318AAAXESURBVHja7N1/iFV1HMDx573X3d11d13d1dXV1dXV1dXV1dXV1dVVV1111VXX6qo/9kfd1b/8kYKgP1SCKAgioqA/IiKioD8iIiIigv6I6I+I6I+I6I+Ivsdz4fO593x/z7n3d873d+85HxjM3e/v3O+ce7/nfM/v+/2+bwQAAAAAAACgX0X5H583b97q4cOHFw0fPrz0uHHjSk1NTaW949ixY6UdP3689Pjx46U9v1+2bNnF+f2G7u7uS/b391/a29t7+bFjx644ceLElae7ubm5dNeuXaV3795devv27aX9+eX5/T3Tpk27oqur64rhw4dfaVv1qN26dev206dPX7d3797rT5w4cT0fAgC04oK0R7t27dr9vXv33nDq1Kkb84P36iuvvPKqixcvvrqtra304MGDpX19faVnz54tnTt37t8t/3+t/P/f+7N+/frSTZs2lV65cmXpkSNHlu7atap0165dpWfOnCkdPnx4aX9O5+f78/v2/Px7a2tr6bJly/74TOrs7Cy9dOnS0vPnz5f2fH7F8OHDS5cuXVpas2ZN6ZEjR0p7vj9//nzpiBEjSltaWkoXLlxYOnHixNLm5ubS3t7e0mPHjpXevHlz6dq1a0v7c7+U39/d3X3dvn37bsyv35bft/GhAUCj5822trbL165de/uxY8duPnXq1M09PT23Xrhw4dYJEya05Qfv9REjRlzf2dl5w8mTJ2/u6+u77cyZM7f3529ra7uhvb39ho6Ojhu6u7tvOH369K3589vOnDlza9u689v68u39+fntp0+fvvXkyZO35c9vy5/f1tfXd1t/f//tJ06cuP3o0aO3Hzly5PbDhw/fvn///tu3bdt2++bNm2/Pz9+eP39bft62/Lxtfn7b2rVrbyvP37ZixYrbVq5ceduSJUv+eC1dunTpba2trbdNnjz5tqampttmzpx524wZM/54TZ8+/bbp06ff1tXVdVtHR8dtw4cPf+E1bNiw29ra2m7r6em5vbe39/aenh7+bABAM/bS79i5c+f9Bw4ceHDPnj0P5gfvzQ8ePHj/oUOHHuzp6XkwP/DB/OAHDx8+/ODOHTse3Llz54Nr1659sGLFigcLFy58MH/+/Afz589/sGTJkgdLly59sHz58gfLli17sHLlygcrV658sGrVqgerV69+sGbNmgdr1qx5sH79+x8+cODAw4cOHXr48OHDDx85cuThI0eOPHzkyJGHjx49+vDJkycfPnPmzMNnzpx5+OzZsw+fP3/+4YsXLz586dKlh8+fP//w+fPnH75w4cLDHR0dD3d2dj7c1dX1cE9Pz8M9PT0P9/b2PtyXbx8+fPjwoUOHHj548ODDBw4cePjAgQMP+/kE0Ey99FWrVj3av3//o4cOHXq0p6fn0Z6enkePHz/+aF9f36MnTpx49OTJk4+eOnXq0bNnz/7bcvLkyUePHz/+6IkTJ/7t+ePHjz96/PjxR0+cOJHv//31X59L+f7Ro0cfPXr06KNHjhx5tC/fPnrkyJFH+/v7Hz106NCjBw8efLTh80cPHTr06KFDhx49ePDgo4cOHXq0L98+euTIkUf7+/sfPXr06KMnTpx49OTJk4/m1x89derUo2fPnn303LlzehkAmi8P/ebNm/0AAvAP+u0dO3b4EQTgn/Pb69ev90MIwD/nt1etWuWHEIB/zm8vX77cDyEA/5zfLlu2zA8hAP+c3y5ZssQPIQD/nN/Onz/fDyEA/5zfTp8+3Q8hAP+c386dO9cPIQD/nN/OmjXLDyEA/5zfTp8+3Q8hAP+c306dOtUPIQD/nN/OnjzZDyEA/6zfHjNmjJ9CAP5pvz1y5Eg/hgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwJ/4S4ABAIV8H1x7y+aVAAAAAElFTkSuQmCC">
-
-    <!-- CSS Frameworks & Fonts -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600&display=swap');
       
       body {
         font-family: 'Inter', sans-serif;
-        background-color: #1e293b; /* slate-800 matches app bg */
-        margin: 0;
-        padding: 0;
+        background-color: #1e293b;
+        margin: 0; padding: 0;
         overflow: hidden;
-      }
-      .font-mono {
-        font-family: 'JetBrains Mono', monospace;
-      }
-      /* Prevent elastic scrolling on iOS */
-      html, body {
         overscroll-behavior: none;
-        height: 100%;
-        width: 100%;
+        -webkit-user-select: none;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
       }
+      .font-mono { font-family: 'JetBrains Mono', monospace; }
     </style>
 
-    <!-- React Dependencies -->
+    <!-- React & Babel (iPhone対応版) -->
     <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <!-- 【修正点1】iPhoneで正しく動く新しい翻訳エンジンに変更 -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        // --- TYPES & CONSTANTS ---
-        const CalculatorAction = {
-            ADD: '+',
-            SUBTRACT: '-',
-            MULTIPLY: '*',
-            DIVIDE: '/',
-            EQUALS: '=',
-            CLEAR: 'C',
-            ALL_CLEAR: 'AC',
-            GT: 'GT',
-            DECIMAL: '.',
-            BACKSPACE: '⌫'
-        };
-
         // --- COMPONENTS ---
 
-        // Button Component
         const Button = ({ label, onClick, className = '', variant = 'default' }) => {
+            // 【修正】高さを h-full からオリジナルの h-14/h-16 に戻しました
             const baseStyles = "active:scale-95 transition-transform duration-75 select-none text-xl font-medium rounded-lg shadow-sm flex items-center justify-center h-14 md:h-16";
             
             const variants = {
@@ -86,12 +61,10 @@
             );
         };
 
-        // Tape Component
         const Tape = ({ entries, onToggleEntry }) => {
             const bottomRef = React.useRef(null);
 
             React.useEffect(() => {
-                // 【修正点2】iPhoneでエラーになりやすい記述を修正
                 if (entries.length > 0 && bottomRef.current) {
                     bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
                 }
@@ -159,54 +132,35 @@
             );
         };
 
-        // Main App Component
         const App = () => {
             const [currentInput, setCurrentInput] = React.useState('0');
             
-            // Load from Local Storage
             const [tape, setTape] = React.useState(() => {
-                if (typeof window !== 'undefined') {
-                    try {
-                        const saved = window.localStorage.getItem('calculator_tape');
-                        return saved ? JSON.parse(saved) : [];
-                    } catch (e) {
-                        return [];
-                    }
-                }
-                return [];
+                try {
+                    const saved = window.localStorage.getItem('calculator_tape');
+                    return saved ? JSON.parse(saved) : [];
+                } catch (e) { return []; }
             });
 
             const [pendingOperator, setPendingOperator] = React.useState(null);
             
             const [grandTotal, setGrandTotal] = React.useState(() => {
-                if (typeof window !== 'undefined') {
-                    try {
-                        const saved = window.localStorage.getItem('calculator_grand_total');
-                        return saved ? parseFloat(saved) : 0;
-                    } catch (e) {
-                        return 0;
-                    }
-                }
-                return 0;
+                try {
+                    const saved = window.localStorage.getItem('calculator_grand_total');
+                    return saved ? parseFloat(saved) : 0;
+                } catch (e) { return 0; }
             });
 
             const [isNewNumber, setIsNewNumber] = React.useState(true);
 
-            // Save to Local Storage
-            // 【修正点3】iPhoneのプライベートモード等でのクラッシュ防止
             React.useEffect(() => {
-                try {
-                    window.localStorage.setItem('calculator_tape', JSON.stringify(tape));
-                } catch(e) {}
+                try { window.localStorage.setItem('calculator_tape', JSON.stringify(tape)); } catch(e){}
             }, [tape]);
 
             React.useEffect(() => {
-                try {
-                    window.localStorage.setItem('calculator_grand_total', grandTotal.toString());
-                } catch(e) {}
+                try { window.localStorage.setItem('calculator_grand_total', grandTotal.toString()); } catch(e){}
             }, [grandTotal]);
 
-            // Calculation Logic
             const calculateTapeTotal = React.useCallback((entries) => {
                 if (entries.length === 0) return 0;
                 
@@ -272,25 +226,19 @@
 
                 if (op === '=') {
                     if (tape.length === 0 && !pendingOperator) return;
-
                     let entryOp = pendingOperator || '+';
-                    
                     if (!pendingOperator && (tape.length === 0 || lastEntryIsTotal)) {
                         entryOp = undefined;
                     }
-
                     const newEntry = {
                         id: Date.now().toString(),
                         value: val,
                         operator: entryOp,
                         isExcluded: false,
                     };
-                    
                     const tempTape = [...tape, newEntry];
                     const result = calculateTapeTotal(tempTape);
-                    
                     setGrandTotal(prev => prev + result);
-                    
                     const totalEntry = {
                         id: (Date.now() + 1).toString(),
                         value: result,
@@ -298,20 +246,16 @@
                         isExcluded: false,
                         isTotal: true
                     };
-
                     setTape([...tempTape, totalEntry]);
                     setCurrentInput(result.toString());
                     setPendingOperator(null);
                     setIsNewNumber(true);
-                    
                 } else {
                     if (pendingOperator && isNewNumber && !lastEntryIsTotal && tape.length > 0) {
                          setPendingOperator(op);
                          return;
                     }
-
                     let newTape = [...tape];
-
                     if (tape.length === 0 || lastEntryIsTotal) {
                         newTape.push({
                             id: Date.now().toString(),
@@ -327,10 +271,8 @@
                             isExcluded: false,
                         });
                     }
-
                     setTape(newTape);
                     setPendingOperator(op);
-                    
                     const intermediateResult = calculateTapeTotal(newTape);
                     setCurrentInput(intermediateResult.toString());
                     setIsNewNumber(true);
@@ -339,7 +281,7 @@
 
             const handleAction = (action) => {
                 switch (action) {
-                    case CalculatorAction.ALL_CLEAR:
+                    case 'AC':
                         setTape([]);
                         setCurrentInput('0');
                         setPendingOperator(null);
@@ -350,15 +292,15 @@
                             window.localStorage.removeItem('calculator_grand_total');
                         } catch(e){}
                         break;
-                    case CalculatorAction.CLEAR:
+                    case 'C':
                         setCurrentInput('0');
                         setIsNewNumber(true);
                         break;
-                    case CalculatorAction.BACKSPACE:
+                    case '⌫':
                         if (isNewNumber) return;
                         setCurrentInput(prev => prev.length > 1 ? prev.slice(0, -1) : '0');
                         break;
-                    case CalculatorAction.GT:
+                    case 'GT':
                          setCurrentInput(grandTotal.toString());
                          setIsNewNumber(true);
                          break;
@@ -407,9 +349,9 @@
 
                         {/* Keypad */}
                         <div className="grid grid-cols-4 gap-3 md:gap-4 flex-1">
-                            <Button label="AC" onClick={() => handleAction(CalculatorAction.ALL_CLEAR)} variant="accent" className="bg-red-500 hover:bg-red-600 border-red-600 text-white" />
-                            <Button label="GT" onClick={() => handleAction(CalculatorAction.GT)} variant="action" />
-                            <Button label="→" onClick={() => handleAction(CalculatorAction.BACKSPACE)} variant="action" />
+                            <Button label="AC" onClick={() => handleAction('AC')} variant="accent" className="bg-red-500 hover:bg-red-600 border-red-600 text-white" />
+                            <Button label="GT" onClick={() => handleAction('GT')} variant="action" />
+                            <Button label="→" onClick={() => handleAction('⌫')} variant="action" />
                             <Button label="÷" onClick={() => handleOperator('/')} variant="operator" />
 
                             <Button label="7" onClick={() => handleNumber('7')} />
